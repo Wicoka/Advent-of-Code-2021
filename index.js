@@ -2183,23 +2183,25 @@ function countWindows() {
   console.log(depthIncreaseCount);
 }
 
-function countDirection() {
-  let x = 0;
-  let y = 0;
+function countDistance() {
+  let horizontalDistance = 0;
+  let verticalDistance = 0;
+  let aim = 0;
   directions.forEach((direction, index) => {
     if (direction === 'forward') {
-      x += directions[index + 1];
+      horizontalDistance += directions[index + 1];
+      verticalDistance += directions[index + 1] * aim;
     }
     if (direction === 'down') {
-      y += directions[index + 1];
+      aim += directions[index + 1];
     }
     if (direction === 'up') {
-      y -= directions[index + 1];
+      aim -= directions[index + 1];
     }
   });
-  console.log(x * y);
+  console.log(horizontalDistance * verticalDistance);
 }
 
 // countDepths();
 // countWindows();
-countDirection();
+countDistance();
