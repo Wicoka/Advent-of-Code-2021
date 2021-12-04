@@ -10,7 +10,8 @@ export const calculateBingo = () => {
       if (allInOneBoard[j] === numbers[i]) {
         allInOneBoard[j] = 0;
 
-        allInOneBoard.forEach((x, index) => {
+        for (let index = 0; index < allInOneBoard.length; index++) {
+          // Check the board if it's bingo
           if ((index + 1) % 25 === 0) {
             const temporaryBoard = [];
             for (let i = 0; i < 25; i++) {
@@ -18,18 +19,19 @@ export const calculateBingo = () => {
             }
             if (checkBingo(temporaryBoard)) {
               winCounter++;
+              // Find the first winner
               if (winCounter < 2) {
                 console.log('Winner number: ', numbers[i]);
                 console.log('Winner board: ', temporaryBoard);
 
                 console.log(
-                  'Result: ',
+                  'Win result: ',
                   temporaryBoard.reduce((a, b) => a + b, 0) * numbers[i]
                 );
               }
             }
           }
-        });
+        }
       }
     }
   }
@@ -44,32 +46,34 @@ export const calculateLastBingo = () => {
       if (allInOneBoard[j] === numbers[i]) {
         allInOneBoard[j] = 0;
 
-        allInOneBoard.forEach((x, index) => {
+        for (let index = 0; index < allInOneBoard.length; index++) {
+          // Check the board if it's bingo
           if ((index + 1) % 25 === 0) {
             const temporaryBoard = [];
             for (let i = 0; i < 25; i++) {
               temporaryBoard.push(allInOneBoard[index - i]);
             }
             if (checkBingo(temporaryBoard)) {
+              // If bingo, put the result in the winResults array and fill with 999
               winResults.push(
                 temporaryBoard.reduce((a, b) => a + b, 0) * numbers[i]
               );
               for (let j = 0; j < 25; j++) {
+                // Fill the board if it wins
+                // Decrease redunancy
                 allInOneBoard[index - j] = 999;
               }
             }
           }
-        });
+        }
       }
     }
   }
 
-  // winResults = winResults.filter((x) => x > 20000);
-
-  // console.log(winResults.length);
-  console.log(winResults[99]);
+  console.log('Last result: ', winResults[winResults.length - 1]);
 };
 
+//Check the board
 const checkBingo = (board) => {
   if (board[0] + board[1] + board[2] + board[3] + board[4] === 0) {
     return true;
