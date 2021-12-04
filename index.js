@@ -1,4 +1,4 @@
-import { calculateBingo } from './utils/day-4.js';
+import { calculateLastBingo } from './utils/day-4.js';
 
 // countDepths(depths);
 // countWindows(depths);
@@ -21,4 +21,4 @@ import { calculateBingo } from './utils/day-4.js';
 
 // console.log('CO2: ', test);
 
-calculateBingo();
+calculateLastBingo();

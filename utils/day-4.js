@@ -3,7 +3,7 @@ import { numbers } from '../inputs/day-4-numbers.input.js';
 
 export const calculateBingo = () => {
   let allInOneBoard = boards.filter((x) => x !== null || x !== undefined);
-  let counter = 0;
+  let winCounter = 0;
 
   for (let i = 0; i < numbers.length; i++) {
     for (let j = 0; j < allInOneBoard.length; j++) {
@@ -17,8 +17,8 @@ export const calculateBingo = () => {
               temporaryBoard.push(allInOneBoard[index - i]);
             }
             if (checkBingo(temporaryBoard)) {
-              counter++;
-              if (counter < 2) {
+              winCounter++;
+              if (winCounter < 2) {
                 console.log('Winner number: ', numbers[i]);
                 console.log('Winner board: ', temporaryBoard);
 
@@ -33,6 +33,41 @@ export const calculateBingo = () => {
       }
     }
   }
+};
+
+export const calculateLastBingo = () => {
+  let allInOneBoard = boards.filter((x) => x !== null || x !== undefined);
+  let winResults = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < allInOneBoard.length; j++) {
+      if (allInOneBoard[j] === numbers[i]) {
+        allInOneBoard[j] = 0;
+
+        allInOneBoard.forEach((x, index) => {
+          if ((index + 1) % 25 === 0) {
+            const temporaryBoard = [];
+            for (let i = 0; i < 25; i++) {
+              temporaryBoard.push(allInOneBoard[index - i]);
+            }
+            if (checkBingo(temporaryBoard)) {
+              winResults.push(
+                temporaryBoard.reduce((a, b) => a + b, 0) * numbers[i]
+              );
+              for (let j = 0; j < 25; j++) {
+                allInOneBoard[index - j] = 999;
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+
+  // winResults = winResults.filter((x) => x > 20000);
+
+  // console.log(winResults.length);
+  console.log(winResults[99]);
 };
 
 const checkBingo = (board) => {
