@@ -1,4 +1,4 @@
-import { calculateBingo, calculateLastBingo } from './utils/day-4.js';
+import { simulateLanternfishes } from './utils/day-6.js';
 
 // countDepths(depths);
 // countWindows(depths);
@@ -20,5 +20,6 @@ import { calculateBingo, calculateLastBingo } from './utils/day-4.js';
 // }
 
 // console.log('CO2: ', test);
-calculateBingo();
-calculateLastBingo();
+// calculateBingo();
+// calculateLastBingo();
+simulateLanternfishes();
