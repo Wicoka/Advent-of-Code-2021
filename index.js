@@ -1,4 +1,4 @@
-import { simulateLanternfishes } from './utils/day-6.js';
+import { simulateBigLanternfishes } from './utils/day-6.js';
 
 // countDepths(depths);
 // countWindows(depths);
@@ -22,4 +22,5 @@ import { simulateLanternfishes } from './utils/day-6.js';
 // console.log('CO2: ', test);
 // calculateBingo();
 // calculateLastBingo();
-simulateLanternfishes();
+// simulateLanternfishes();
+simulateBigLanternfishes();
