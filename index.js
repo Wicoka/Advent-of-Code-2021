@@ -1,4 +1,4 @@
-import { simulateBigLanternfishes } from './utils/day-6.js';
+import { readFile } from './utils/day-8.js';
 
 // countDepths(depths);
 // countWindows(depths);
@@ -23,4 +23,5 @@ import { simulateBigLanternfishes } from './utils/day-6.js';
 // calculateBingo();
 // calculateLastBingo();
 // simulateLanternfishes();
-simulateBigLanternfishes();
+// simulateBigLanternfishes();
+readFile('day-8.txt');
